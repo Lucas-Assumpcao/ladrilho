@@ -1,6 +1,7 @@
 const url = `https://picsum.photos/v2/list`;
 const body = document.querySelector('body');
 const main = document.querySelector('main');
+const button = document.querySelector('button');
 
 //criação de função assíncrona para buscar os dados da url
 async function getDados(url) {
@@ -21,8 +22,9 @@ function filtrarDados(dados) {
 }
 //Função apra estilizar o os elementos da página (body e main)
 function estilizarMural(){
-    body.className = "flex items-center justify-center"
+    body.className = "p-20 flex items-center justify-center"
 }   main.classList.add("columns-3", "gap-5", "*:mt-5")
+button.classList.add("absolute", "top-5", "right-5", "p-2", "size-8")
 
 estilizarMural();
 
@@ -35,3 +37,18 @@ function inserirIMG(url) {
   // Adiciona a imagem criada dentro do elemento main
     main.appendChild(img);
 }
+
+function modoEscuro() {
+    body.classList.toggle("bg-black")
+    body.classList.toggle("text-white")
+
+}
+//troca do icone do botão
+button.addEventListener('click', () => {
+    const img = button.querySelector('img');
+    if (body.classList.contains('bg-black')) {
+        img.src = "ensolarado.png";
+    } else {
+        img.src = 'moon-solid.png';
+    }
+});
