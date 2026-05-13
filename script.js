@@ -16,15 +16,16 @@ getDados(url);
 // funcao para filtrar os dados e mostrar as urls das imagens no console
 function filtrarDados(dados) {
     const urlIMG = dados.forEach((elemento) => {
-        inserirIMG(elemento.download_url)
+        inserirIMG(elemento.download_url, elemento.author);
         console.log(elemento.download_url);
     });
 }
 //Função apra estilizar o os elementos da página (body e main)
 function estilizarMural(){
     body.className = "p-20 flex items-center justify-center"
-}   main.classList.add("columns-3", "gap-5", "*:mt-5")
-button.classList.add("absolute", "top-5", "right-5", "p-2", "size-8")
+  main.classList.add("columns-2","md: columns-3", "gap-5", "*:mt-5")
+    button.classList.add("absolute", "top-5", "right-5", "p-2", "size-8")
+}
 
 estilizarMural();
 
@@ -52,3 +53,15 @@ button.addEventListener('click', () => {
         img.src = 'moon-solid.png';
     }
 });
+
+//adicione o nome do autor da imagem como legenda centralizada abaixo de cada imagem
+function inserirIMG(url, author) {
+    let img = document.createElement('img');
+    img.src = url;
+    main.appendChild(img);
+
+    let autor = document.createElement('p');
+    autor.innerText = `${author}`;
+    autor.classList.add("text-center");
+    main.appendChild(autor);
+}
